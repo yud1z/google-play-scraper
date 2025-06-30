@@ -1,4 +1,4 @@
-# google-play-scraper [![workflow](https://github.com/facundoolano/google-play-scraper/actions/workflows/tests.yml/badge.svg)](https://github.com/facundoolano/google-play-scraper/actions/workflows/tests.yml)
+# google-play-scraper [![workflow](https://github.com/yud1z/google-play-scraper/actions/workflows/tests.yml/badge.svg)](https://github.com/yud1z/google-play-scraper/actions/workflows/tests.yml)
 Node.js module to scrape application data from the Google Play store.
 
 ### Related projects
@@ -123,8 +123,8 @@ Results:
 ### list
 Retrieve a list of applications from one of the collections at Google Play. Options:
 
-* `collection` (optional, defaults to `collection.TOP_FREE`): the Google Play collection that will be retrieved. Available options can bee found [here](https://github.com/facundoolano/google-play-scraper/blob/b7669f78766b8306896447ddbe8797fe36eae49f/lib/constants.js#L67).
-* `category` (optional, defaults to no category): the app category to filter by. Available options can bee found [here](https://github.com/facundoolano/google-play-scraper/blob/b7669f78766b8306896447ddbe8797fe36eae49f/lib/constants.js#L10).
+* `collection` (optional, defaults to `collection.TOP_FREE`): the Google Play collection that will be retrieved. Available options can bee found [here](https://github.com/yud1z/google-play-scraper/blob/main/lib/constants.js#L67).
+* `category` (optional, defaults to no category): the app category to filter by. Available options can bee found [here](https://github.com/yud1z/google-play-scraper/blob/main/lib/constants.js#L10).
 * `age` (optional, defaults to no age filter): the age range to filter the apps (only for FAMILY and its subcategories). Available options are `age.FIVE_UNDER`, `age.SIX_EIGHT`, `age.NINE_UP`.
 * `num` (optional, defaults to 500): the amount of apps to retrieve.
 * `lang` (optional, defaults to `'en'`): the two letter language code used to retrieve the applications.
@@ -168,6 +168,38 @@ Results:
     scoreText: '4.5',
     priceText: 'Free',
     free: false } ]
+```
+
+#### TOP_NEW_FREE Collection
+
+To retrieve newly released free apps, you can use the `TOP_NEW_FREE` collection:
+
+```javascript
+import gplay from "google-play-scraper";
+
+// Get top new free apps from all categories
+gplay.list({
+    collection: gplay.collection.TOP_NEW_FREE,
+    num: 20
+  })
+  .then(console.log);
+
+// Get top new free games specifically
+gplay.list({
+    collection: gplay.collection.TOP_NEW_FREE,
+    category: gplay.category.GAME,
+    num: 10
+  })
+  .then(console.log);
+
+// Get top new free apps for a specific country (e.g., Morocco)
+gplay.list({
+    collection: gplay.collection.TOP_NEW_FREE,
+    country: 'ma',
+    lang: 'fr',
+    num: 15
+  })
+  .then(console.log);
 ```
 
 ### search
