@@ -61,6 +61,7 @@ declare enum collection {
   TOP_FREE = 'TOP_FREE',
   TOP_PAID = 'TOP_PAID',
   GROSSING = 'GROSSING',
+  TOP_NEW_FREE = 'TOP_NEW_FREE',
 }
 
 declare enum sort {

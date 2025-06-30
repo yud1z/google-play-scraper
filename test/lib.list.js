@@ -67,6 +67,36 @@ describe('List method', () => {
       .then((apps) => apps.map((app) => assert(app.free)));
   }).timeout(timeout);
 
+  it('should fetch a valid application list for the top new free collection', () => {
+    return gplay.list({
+      collection: gplay.collection.TOP_NEW_FREE,
+      num: 50
+    })
+      .then((apps) => apps.map(assertValidApp))
+      .then((apps) => apps.map((app) => assert(app.free)));
+  }).timeout(timeout);
+
+  it('should fetch a valid application list for the top new free collection in Morocco', () => {
+    return gplay.list({
+      collection: gplay.collection.TOP_NEW_FREE,
+      country: 'ma',
+      lang: 'fr',
+      num: 20
+    })
+      .then((apps) => apps.map(assertValidApp))
+      .then((apps) => apps.map((app) => assert(app.free)));
+  }).timeout(timeout);
+
+  it('should fetch a valid application list for the top new free games collection', () => {
+    return gplay.list({
+      collection: gplay.collection.TOP_NEW_FREE,
+      category: gplay.category.GAME,
+      num: 30
+    })
+      .then((apps) => apps.map(assertValidApp))
+      .then((apps) => apps.map((app) => assert(app.free)));
+  }).timeout(timeout);
+
   it('should fetch a valid application on a given collection regardless of the language', () => {
     return gplay.list({
       collection: gplay.collection.TOP_FREE,
