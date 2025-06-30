@@ -8,9 +8,35 @@ Node.js module to scrape application data from the Google Play store.
 * [google-play-api](https://github.com/facundoolano/google-play-api): a RESTful API to consume the data produced by this library.
 
 ## Installation
+
+### Recommended: Clone and use directly
+```bash
+# Clone the repository
+git clone https://github.com/yud1z/google-play-scraper.git
+
+# Navigate to the project directory
+cd google-play-scraper
+
+# Install dependencies
+npm install
 ```
+
+Then you can import the library in your project:
+
+```javascript
+// Import from the local path
+import gplay from "./google-play-scraper/index.js";
+
+// Or if using require
+const gplay = require("./google-play-scraper/index.js");
+```
+
+### Alternative: Install original package via npm
+```bash
 npm install google-play-scraper
 ```
+
+**Note:** The npm package is the original version and does **not** include the `TOP_NEW_FREE` collection feature. To use the `TOP_NEW_FREE` collection and other enhancements, please use the git clone method above.
 
 ## Usage
 Available methods:
